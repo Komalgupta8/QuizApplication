@@ -32,8 +32,10 @@ public class QuestionService {
             questionRepository.save(question);
             return new ResponseEntity<>("success", HttpStatus.CREATED);
         }catch(Exception e){
-             return new ResponseEntity<>("Failed to save question" , HttpStatus.INTERNAL_SERVER_ERROR);
+             e.printStackTrace();
         }
+        return new ResponseEntity<>("Failed to save question" , HttpStatus.INTERNAL_SERVER_ERROR);
+
     }
 
     public ResponseEntity<List<Question>> getQuestionByCategory(String category) {
