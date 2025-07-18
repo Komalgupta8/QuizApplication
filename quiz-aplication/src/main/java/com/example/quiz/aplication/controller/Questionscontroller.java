@@ -3,6 +3,7 @@ package com.example.quiz.aplication.controller;
 import com.example.quiz.aplication.Service.QuestionService;
 import com.example.quiz.aplication.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,18 +16,18 @@ public class Questionscontroller {
     QuestionService questionService;
 
     @GetMapping("allQuestions")
-    public List<Question> getallQuestion(){
+    public ResponseEntity<List<Question>> getallQuestion(){
         return questionService.getallQuestion();
     }
 
     @PostMapping("addquiz")
-    public String addQuiz(@RequestBody Question question){
+    public ResponseEntity<String> addQuiz(@RequestBody Question question){
         return questionService.save(question);
     }
 
 
     @GetMapping("category/{category}")
-    public List<Question> getQuestionByCategory(@PathVariable String category){
+    public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category){
           return questionService.getQuestionByCategory(category);
     }
 
