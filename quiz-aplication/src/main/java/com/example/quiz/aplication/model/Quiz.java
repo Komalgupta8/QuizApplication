@@ -14,7 +14,14 @@ public class Quiz {
     private Integer id;
     private String title;
 
+
+
     @ManyToMany
+    @JoinTable(
+            name = "quiz_questions",
+            joinColumns = @JoinColumn(name = "quiz_id"),
+            inverseJoinColumns = @JoinColumn(name = "questions_id")
+    )
     private List<Question> questions;
 
     public Integer getId() {

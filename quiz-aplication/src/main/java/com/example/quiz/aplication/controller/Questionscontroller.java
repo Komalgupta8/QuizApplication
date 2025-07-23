@@ -20,8 +20,9 @@ public class Questionscontroller {
         return questionService.getallQuestion();
     }
 
-    @PostMapping("addquiz")
+    @PostMapping("add")
     public ResponseEntity<String> addQuiz(@RequestBody Question question){
+
         return questionService.save(question);
     }
 
